@@ -1,5 +1,5 @@
 return {
-  -- 1. THE COMMAND CENTER (Reverted to your clean settings)
+  -- 1. NEXT-LEVEL TERMINAL (Handheld Console Style)
   {
     "folke/snacks.nvim",
     priority = 1000,
@@ -8,46 +8,42 @@ return {
       terminal = {
         win = {
           position = "float",
-          backdrop = 100, 
-          width = 0.6,
-          height = 0.6,
+          backdrop = 80, 
+          width = 0.65,
+          height = 0.65,
           border = "rounded",
+          title = "   TERMINAL ",
+          title_pos = "center",
           winhighlight = "Normal:Normal,FloatBorder:FloatBorder",
         },
       },
-      dashboard = { enabled = false },
       indent = { enabled = true, char = "▏" }, 
-      scope = { enabled = true }, 
     },
   },
 
-  -- 2. SPOTLIGHT-STYLE COMMAND LINE (Reverted)
+  -- 2. NEXT-LEVEL COMMAND LINE (Spotlight Search)
   {
     "folke/noice.nvim",
     event = "VeryLazy",
     opts = {
-      lsp = {
-        override = {
-          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-          ["vim.lsp.util.set_formatting_op"] = true,
-        },
-      },
-      presets = {
-        command_palette = true, 
-        long_message_to_split = true,
-        bottom_search = false, 
-      },
       views = {
         cmdline_popup = {
-          position = { row = "15%", col = "50%" },
+          position = { row = "30%", col = "50%" },
           size = { width = 60, height = "auto" },
-          border = { style = "rounded", padding = { 0, 1 } },
+          border = { 
+            style = "rounded", 
+            padding = { 0, 1 },
+            text = { top = "   SPOTLIGHT ", top_align = "center" },
+          },
+          win_options = {
+            winhighlight = { Normal = "NormalFloat", FloatBorder = "FloatBorder" },
+          },
         },
       },
     },
   },
 
-  -- 3. THE MIRROR WINBAR (Top Pills)
+  -- 3. THE "FLOATING ISLAND" TOP BAR (The Level Up)
   {
     "utilyre/barbecue.nvim",
     name = "barbecue",
@@ -57,13 +53,22 @@ return {
       theme = "nord",
       attach_navic = true,
       show_modified = true,
-      -- Mirroring the bottom bar's pill ends
+      -- WE USE THICK CAPSULES FOR THE TOP BAR
       lead_custom_section = function() return " " end,
       custom_section = function() return " " end,
+      symbols = { 
+        separator = "  ", 
+        modified = "󰚔", -- Animated feel icon
+        dir = "󰉖",
+      },
+      kinds = {
+        File = "󰟓", -- Gopher at the top
+        Folder = "󰉋",
+      },
     },
   },
 
-  -- 4. THE PILL STATUSLINE (Perfection)
+  -- 4. THE PILL STATUSLINE (Symmetry)
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
@@ -102,31 +107,17 @@ return {
     end,
   },
 
-  -- 5. THE DESIGNER EXPLORER (Neo-tree UI Enhancements)
+  -- 5. THE DESIGNER EXPLORER
   {
     "nvim-neo-tree/neo-tree.nvim",
     opts = {
       window = { width = 30 },
-      filesystem = {
-        group_empty_dirs = true,
-        follow_current_file = { enabled = true },
-      },
-      default_component_configs = {
-        indent = {
-          with_markers = true,
-          indent_marker = "│",
-          last_indent_marker = "└",
-          highlight = "NeoTreeIndentMarker",
-        },
-      },
       event_handlers = {
         {
           event = "neo_tree_buffer_enter",
           handler = function()
-            -- Link Neo-tree to the Sidebar highlight for a distinct look
             vim.cmd 'highlight! link NeoTreeNormal NormalSB'
-            vim.cmd 'highlight! link NeoTreeNormalNC NormalSB'
-            vim.cmd 'highlight! NeoTreeCursorLine guibg=#3b4252' -- Highlight active file
+            vim.cmd 'highlight! NeoTreeCursorLine guibg=#3b4252' 
           end,
         },
       },

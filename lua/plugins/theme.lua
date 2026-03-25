@@ -5,23 +5,29 @@ return {
     config = function()
       vim.cmd.colorscheme "nord"
       local nord_bg = "#2e3440"
-      local surface = "#3b4252"
+      local surface = "#3b4252" -- Island Surface
       local frost = "#88c0d0"
       
-      -- Force standard backgrounds
+      -- 1. BASE BACKGROUNDS
       local groups = { "Normal", "NormalNC", "NormalFloat", "Terminal" }
       for _, group in ipairs(groups) do
         vim.api.nvim_set_hl(0, group, { bg = nord_bg })
       end
 
-      -- SIDEBAR ENHANCEMENT: Distinct but matching grey
-      vim.api.nvim_set_hl(0, "NormalSB", { bg = "#292e39" }) -- Slightly deeper for depth
-      vim.api.nvim_set_hl(0, "NeoTreeIndentMarker", { fg = surface })
-
-      -- MIRROR PILL HIGHLIGHTS
-      vim.api.nvim_set_hl(0, "BarbecueNormal", { bg = "none", fg = "#D8DEE9" })
+      -- 2. THE FLOATING ISLAND WINBAR (The "Next Level" Fix)
+      -- We give the winbar a background so it looks like a separate pill island
+      vim.api.nvim_set_hl(0, "BarbecueNormal", { bg = surface, fg = "#D8DEE9", bold = true })
+      vim.api.nvim_set_hl(0, "WinBar", { bg = surface, fg = frost })
+      vim.api.nvim_set_hl(0, "WinBarNC", { bg = surface, fg = "#4C566A" })
       
-      -- SATURATION BOOST
+      -- 3. BORDERS & SEPARATORS
+      vim.api.nvim_set_hl(0, "FloatBorder", { fg = frost, bg = nord_bg })
+      vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#343b48", bg = "none" })
+      
+      -- 4. SIDEBAR
+      vim.api.nvim_set_hl(0, "NormalSB", { bg = "#292e39" })
+      
+      -- 5. SATURATION BOOST
       vim.api.nvim_set_hl(0, "@function", { fg = frost, bold = true })
       vim.api.nvim_set_hl(0, "LualineDesignerCredit", { fg = frost, bg = surface, bold = true })
     end,
