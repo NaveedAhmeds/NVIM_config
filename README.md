@@ -16,7 +16,7 @@ A specialized Neovim setup powered by **LazyVim**, meticulously tuned for Gopher
 
 ### 1. The Workspace
 > A clean, solid UI with custom statusline and zero distractions.
-> <img width="1470" height="956" alt="Screenshot 2026-03-25 at 3 52 08 PM" src="https://github.com/user-attachments/assets/7481192a-d990-42d6-915d-4ff2e2fd306d" />
+> <img width="1470" height="956" alt="Screenshot 2026-03-25 at 4 30 26 PM" src="https://github.com/user-attachments/assets/e59f3b52-0ea8-4edc-be55-a95c6d0ecf2f" />
 
 
 ##  Muscle Memory
@@ -28,6 +28,7 @@ A specialized Neovim setup powered by **LazyVim**, meticulously tuned for Gopher
 | `<leader>gr` | Execute Go file |
 | `<leader>gi` | Fix my messy Go imports |
 | `s` | Teleport to any 2 characters (Hop) |
+
 
 ---
 
